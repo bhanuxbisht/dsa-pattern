@@ -94,7 +94,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]"></div>
                 
                 {/* FAANG Text Content */}
-                <div className="relative z-20 text-center space-y-12 p-8">
+                <div className="relative z-20 text-center space-y-12 p-8 w-full overflow-hidden">
                   <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -105,13 +105,42 @@ export default function Home() {
                     <p className="text-sm text-muted-foreground/60 uppercase tracking-[0.2em]">Master the patterns used at</p>
                   </motion.div>
 
-                  <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                     {/* FAANG Companies */}
-                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#1877F2] transition-colors cursor-default">Meta</motion.span>
-                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#FF9900] transition-colors cursor-default">Amazon</motion.span>
-                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#A2AAAD] transition-colors cursor-default">Apple</motion.span>
-                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#E50914] transition-colors cursor-default">Netflix</motion.span>
-                     <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }} className="text-4xl md:text-5xl font-bold text-foreground/80 hover:text-[#34A853] transition-colors cursor-default">Google</motion.span>
+                  {/* Sliding Logos Marquee */}
+                  <div className="relative w-full max-w-5xl mx-auto overflow-hidden py-6">
+                     <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-background to-transparent z-10"></div>
+                     <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-background to-transparent z-10"></div>
+                     
+                     <motion.div 
+                       className="flex gap-16 items-center whitespace-nowrap"
+                       animate={{ x: ["0%", "-50%"] }}
+                       transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+                     >
+                       {[
+                         { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
+                         { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+                         { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+                         { name: "Netflix", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+                         { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+                         { name: "Goldman Sachs", logo: "https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" },
+                         { name: "J.P. Morgan", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/JPMorgan_Chase.svg" },
+                         // Duplicate for seamless loop
+                         { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
+                         { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+                         { name: "Apple", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+                         { name: "Netflix", logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+                         { name: "Google", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+                         { name: "Goldman Sachs", logo: "https://upload.wikimedia.org/wikipedia/commons/6/61/Goldman_Sachs.svg" },
+                         { name: "J.P. Morgan", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/JPMorgan_Chase.svg" },
+                       ].map((company, i) => (
+                          <div key={i} className="flex items-center justify-center min-w-[140px] px-6">
+                            <img 
+                                src={company.logo} 
+                                alt={company.name} 
+                                className={`h-16 md:h-20 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 ${['Apple', 'J.P. Morgan'].includes(company.name) ? 'dark:invert' : ''} ${company.name === 'Netflix' ? 'brightness-0 dark:brightness-100 dark:invert' : ''}`}
+                            />
+                          </div>
+                       ))}
+                     </motion.div>
                   </div>
                 </div>
                 

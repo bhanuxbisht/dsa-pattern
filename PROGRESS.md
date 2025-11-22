@@ -21,6 +21,7 @@ If you are picking up this project, simply tell Copilot:
 - [x] **Project Setup**: Next.js 15, TypeScript, Tailwind CSS v4.
 - [x] **Design System**: Configured in `globals.css` (CSS Variables) and `tailwind.config.ts`.
 - [x] **Landing Page**: Implemented with `framer-motion` animations to match the "premium" feel.
+- [x] **Hero Visuals**: "Glorious light" effect, glassmorphism cards, and sliding text marquee (FAANG + Finance).
 - [x] **Data Structure**: `content/problems.json` created for easy problem management.
 
 ### Next Steps (Phase 2: Backend & Auth)
